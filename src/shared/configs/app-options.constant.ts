@@ -16,16 +16,23 @@ import { RedisClientOptions } from 'redis';
 
 export const configOptions: ConfigModuleOptions = {
   isGlobal: true,
+  envFilePath: `.${process.env.NODE_ENV ?? 'development'}.env`,
   validationSchema: Joi.object({
-    DB_CONNECTION_STRING: Joi.string(),
+    MONGODB_URI: Joi.string().uri().required(),
+    NODE_ENV: Joi.string()
+      .valid('development', 'production')
+      .default('development'),
   }),
 };
 
 export const mongooseOptions: MongooseModuleAsyncOptions = {
   useFactory: async (configService: ConfigService) => ({
-    uri: configService.get<string>('MONGODB_URL')!,
+    uri: configService.get<string>('MONGODB_URI')!,
     retryAttempts: 10,
-    dbName: 'courseManagementLocalDB',
+    dbName: `courseManagement${
+      configService.get<string>('NODE_ENV')!.charAt(0).toUpperCase() +
+      configService.get<string>('NODE_ENV')!.slice(1)
+    }DB`,
   }),
   inject: [ConfigService],
 };
@@ -38,6 +45,7 @@ export const jwtOptions: JwtModuleAsyncOptions = {
     },
   }),
   inject: [ConfigService],
+
   global: true,
 };
 
@@ -50,8 +58,8 @@ export const redisOptions: CacheModuleAsyncOptions<RedisClientOptions> = {
       tls: false,
     },
   }),
-  inject: [ConfigService],
   isGlobal: true,
+  inject: [ConfigService],
 };
 
 export const i18nOptions: I18nOptions = {
