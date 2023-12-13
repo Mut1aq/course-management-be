@@ -1,0 +1,11 @@
+{
+  "user": "User",
+  "admin": "Admin",
+  "post": "Post",
+  "comment": "Comment",
+  "room": "Room",
+  "message": "Message",
+  "email": "Email",
+  "notification": "Notification",
+  "course": "Course"
+}

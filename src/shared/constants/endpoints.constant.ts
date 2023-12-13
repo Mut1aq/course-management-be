@@ -1,0 +1,48 @@
+export const ENDPOINTS = {
+  AUTH: {
+    CONTROLLER: 'auth',
+    LOGIN: 'login',
+    REGISTER_STUDENT: 'register-student',
+    REGISTER_MODERATOR: 'register-moderator',
+  },
+  COURSES: {
+    CONTROLLER: 'courses',
+    CREATE: '',
+    FIND_ALL: '',
+    FIND_ONE: ':courseID',
+    DELETE: ':courseID',
+    UPDATE: ':courseID',
+  },
+  USERS: {
+    CONTROLLER: 'users',
+    CREATE: '',
+    FIND_ALL: '',
+    FIND_ONE: ':userID',
+    DELETE: ':userID',
+    UPDATE: ':userID',
+  },
+  MODERATORS: {
+    CONTROLLER: 'moderators',
+    CREATE: '',
+    FIND_ALL: '',
+    FIND_ONE: ':moderatorID',
+    DELETE: ':moderatorID',
+    UPDATE: ':moderatorID',
+  },
+  STUDENTS: {
+    CONTROLLER: 'students',
+    CREATE: '',
+    FIND_ALL: '',
+    FIND_ONE: ':studentID',
+    DELETE: ':studentID',
+    UPDATE: ':studentID',
+  },
+  LECTURES: {
+    CONTROLLER: 'lectures',
+    CREATE: '',
+    FIND_ALL: '',
+    FIND_ONE: ':lectureID',
+    DELETE: ':lectureID',
+    UPDATE: ':lectureID',
+  },
+};
